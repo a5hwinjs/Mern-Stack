@@ -1,0 +1,42 @@
+const mongoose = require('mongoose');
+
+var productSchema = new mongoose.Schema({
+
+    name:{
+        type: String,
+        maxlength : 32,
+        trim : true,
+        required : true
+    },
+    description:{
+        type : String,
+        maxlength : 2000,
+        trim : true,
+        required : true
+    },
+    price:{
+        type: Number,
+        maxlength : 32,
+        trim : true,
+        required : true
+    },
+    category:{
+        type: ObjectId,
+        ref :"Category",
+        required :true
+    },
+    stock:{
+        type: Number
+    },
+    sold:{
+        type : Number,
+        default :0
+    },
+    photo:{
+        data : Buffer,
+        contentType : String
+    }
+},{timestamps : true})
+
+
+mongoose.exports = mongoose.model("Product",productSchema);
